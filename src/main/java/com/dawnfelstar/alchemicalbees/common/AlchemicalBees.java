@@ -2,7 +2,7 @@ package com.dawnfelstar.alchemicalbees.common;
 
 import com.dawnfelstar.alchemicalbees.client.proxy.ClientProxy;
 import com.dawnfelstar.alchemicalbees.common.abstraction.ALBBlock;
-import com.dawnfelstar.alchemicalbees.common.abstraction.ALBItem;
+import com.dawnfelstar.alchemicalbees.common.abstraction.ALBItems;
 import com.dawnfelstar.alchemicalbees.common.proxy.IProxy;
 import com.dawnfelstar.alchemicalbees.data.ALBBlockStateProvider;
 import com.dawnfelstar.alchemicalbees.data.ALBItemModelProvider;
@@ -14,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -56,31 +55,26 @@ public class AlchemicalBees {
     }
 
     private void addRegistries(IEventBus mod) {
-        ALBItem.generateItems();
         ALBBlock.generateBlocks();
         ITEM_GROUP = new ItemGroup("alchemical_bees") {
             @Override
             @OnlyIn(Dist.CLIENT)
             public ItemStack createIcon() {
-                return new ItemStack(ALBItem.registeredItems.get("royal_jelly").item.get());
+                return new ItemStack(ALBItems.ROYAL_JELLY.get());
             }
         };
-        ALBItem.addToTab();
-        ALBItem.ITEMS.register(mod);
+        ALBItems.ITEMS.register(mod);
         ALBBlock.BLOCKS.register(mod);
     }
 
     private void gatherData(final GatherDataEvent event) {
-        LOGGER.debug("Running data gen #1");
         DataGenerator gen = event.getGenerator();
         if (event.includeClient()) {
-            LOGGER.debug("Running data gen #2");
             ExistingFileHelper efh = event.getExistingFileHelper();
 
             gen.addProvider(new ALBItemModelProvider(gen, efh));
             gen.addProvider(new ALBBlockStateProvider(gen, efh));
             addLanguageProviders(gen);
-            LOGGER.debug("Running data gen #6");
         }
     }
 

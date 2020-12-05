@@ -23,7 +23,6 @@ public class ALBBlockStateProvider extends BlockStateProvider {
 
     @Override
     public void registerStatesAndModels() {
-        LOGGER.debug("Running data gen #5");
         ALBBlock.registeredBlocks.forEach((k, v) -> {
             if (v instanceof PipeBlock) {
                 generatePipeTemplate(v);

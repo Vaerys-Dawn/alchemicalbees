@@ -1,7 +1,7 @@
 package com.dawnfelstar.alchemicalbees.data;
 
 import com.dawnfelstar.alchemicalbees.common.AlchemicalBees;
-import com.dawnfelstar.alchemicalbees.common.abstraction.ALBItem;
+import com.dawnfelstar.alchemicalbees.common.abstraction.ALBItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -23,12 +23,7 @@ public class ALBItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        LOGGER.debug("Running data gen #3");
-        ALBItem.registeredItems.forEach((k, v) -> {
-            if (!v.isBlockItem){
-                simpleItem(v.item);
-            }
-        });
+        simpleItem(ALBItems.ROYAL_JELLY);
     }
 
     public void simpleItem(Supplier<? extends Item> itemSupplier) {

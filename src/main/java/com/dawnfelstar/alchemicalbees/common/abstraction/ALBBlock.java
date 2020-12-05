@@ -56,7 +56,7 @@ public abstract class ALBBlock extends Block {
     public RegistryObject<BlockItem> item;
     public Map<String, String> translations = new HashMap<>();
     public Item.Properties itemProperties = new Item.Properties();
-    public ALBItem swcItem;
+    public ALBItems swcItem;
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, AlchemicalBees.MODID);
     public static Map<String, ALBBlock> registeredBlocks = new HashMap<>();
@@ -74,7 +74,7 @@ public abstract class ALBBlock extends Block {
 
         block.addProperties(block.field_235684_aB_);
         block.block = BLOCKS.register(id, () -> block);
-        block.item = ALBItem.ITEMS.register(id, () -> blockItem);
+        block.item = ALBItems.ITEMS.register(id, () -> blockItem);
         // register in dictionaries
         registeredBlocks.put(id, block);
     }
