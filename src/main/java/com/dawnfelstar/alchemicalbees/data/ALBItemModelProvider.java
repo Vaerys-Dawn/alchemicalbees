@@ -18,12 +18,12 @@ public class ALBItemModelProvider extends ItemModelProvider {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public ALBItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, AlchemicalBees.MODID, existingFileHelper);
+        super(generator, AlchemicalBees.MOD_ID, existingFileHelper);
     }
 
     @Override
     protected void registerModels() {
-        simpleItem(ALBItems.ROYAL_JELLY);
+        ALBItems.SIMPLE_ITEMS.getEntries().forEach(this::simpleItem);
     }
 
     public void simpleItem(Supplier<? extends Item> itemSupplier) {

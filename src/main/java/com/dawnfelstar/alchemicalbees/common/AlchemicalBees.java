@@ -8,6 +8,7 @@ import com.dawnfelstar.alchemicalbees.data.ALBBlockStateProvider;
 import com.dawnfelstar.alchemicalbees.data.ALBItemModelProvider;
 import com.dawnfelstar.alchemicalbees.data.ALBLanguageProvider;
 import com.dawnfelstar.alchemicalbees.server.proxy.ServerProxy;
+import com.tterrag.registrate.Registrate;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -25,11 +26,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(AlchemicalBees.MODID)
+@Mod(AlchemicalBees.MOD_ID)
 public class AlchemicalBees {
     // Directly reference a log4j logger.
 
-    public static final String MODID = "alchemicalbees";
+    public static final String MOD_ID = "alchemicalbees";
     public static ItemGroup ITEM_GROUP;
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -43,7 +44,6 @@ public class AlchemicalBees {
     public AlchemicalBees() {
         IEventBus mod = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forge = MinecraftForge.EVENT_BUS;
-
         PROXY.setup(mod, forge);
         addRegistries(mod);
         mod.addListener(this::commonSetup);
@@ -56,14 +56,7 @@ public class AlchemicalBees {
 
     private void addRegistries(IEventBus mod) {
         ALBBlock.generateBlocks();
-        ITEM_GROUP = new ItemGroup("alchemical_bees") {
-            @Override
-            @OnlyIn(Dist.CLIENT)
-            public ItemStack createIcon() {
-                return new ItemStack(ALBItems.ROYAL_JELLY.get());
-            }
-        };
-        ALBItems.ITEMS.register(mod);
+        ALBItems.SIMPLE_ITEMS.register(mod);
         ALBBlock.BLOCKS.register(mod);
     }
 

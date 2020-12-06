@@ -18,7 +18,7 @@ public class ALBBlockStateProvider extends BlockStateProvider {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public ALBBlockStateProvider(DataGenerator gen, ExistingFileHelper efh) {
-        super(gen, AlchemicalBees.MODID, efh);
+        super(gen, AlchemicalBees.MOD_ID, efh);
     }
 
     @Override

@@ -1,4 +1,7 @@
 {
+  "item.alchemicalbees.a_thing": "A Thing",
+  "item.alchemicalbees.crimson_spore": "Crimson Spore",
   "item.alchemicalbees.royal_jelly": "Royal Jelly",
-  "itemGroup.alchemical_bees" : "Alchemical Bees"
+  "item.alchemicalbees.warped_spore": "Warped Spore",
+  "itemGroup.alchemical_bees": "Alchemical Bees"
 }

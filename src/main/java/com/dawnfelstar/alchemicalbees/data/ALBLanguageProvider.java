@@ -3,6 +3,7 @@ package com.dawnfelstar.alchemicalbees.data;
 import com.dawnfelstar.alchemicalbees.common.AlchemicalBees;
 import com.dawnfelstar.alchemicalbees.common.abstraction.ALBBlock;
 import com.dawnfelstar.alchemicalbees.common.abstraction.ALBItems;
+import com.dawnfelstar.alchemicalbees.items.AThing;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 import org.apache.logging.log4j.LogManager;
@@ -13,7 +14,7 @@ public class ALBLanguageProvider extends LanguageProvider {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public ALBLanguageProvider(DataGenerator gen, String locale) {
-        super(gen, AlchemicalBees.MODID, locale);
+        super(gen, AlchemicalBees.MOD_ID, locale);
     }
 
     @Override
@@ -25,6 +26,7 @@ public class ALBLanguageProvider extends LanguageProvider {
 //                addItem(v.item, translation);
 //            }
 //        });
+//        addItem(ALBItems.A_THING, "AAaaAa");
         ALBBlock.registeredBlocks.forEach((k, v) -> {
             String translation = v.translations.get(locale);
             if (translation != null) {

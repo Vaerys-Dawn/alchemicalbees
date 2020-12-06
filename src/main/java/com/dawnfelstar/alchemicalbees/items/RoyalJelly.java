@@ -7,8 +7,8 @@ import net.minecraft.util.SoundEvents;
 
 public class RoyalJelly extends HoneyBottleItem {
 
-    public RoyalJelly() {
-        super(new Item.Properties().containerItem(Items.GLASS_BOTTLE).food(Foods.HONEY).group(AlchemicalBees.ITEM_GROUP).maxStackSize(16));
+    public RoyalJelly(Properties properties) {
+        super(properties);
     }
 
     public UseAction getUseAction(ItemStack stack) {
